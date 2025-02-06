@@ -71,10 +71,6 @@ serestore:
 lint:
 	$(info Running linters...)
 
-	yamllint .
-	ansible-lint
-	ansible-playbook --syntax-check *yaml
-
 test: lint
 	$(info Running tests...)
 

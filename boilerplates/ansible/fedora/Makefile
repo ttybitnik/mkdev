@@ -68,12 +68,15 @@ serestore:
 lint:
 	$(info Running linters...)
 
-	yamllint .
 	ansible-lint
-	ansible-playbook --syntax-check *yaml
+	yamllint .
 
 test: lint
 	$(info Running tests...)
+
+	molecule -c molecule/resources/molecule.yml test \
+	$(if $(scenario),-s $(scenario)) \
+	$(if $(platform),-p $(platform))
 
 build: test
 	$(info Building...)
