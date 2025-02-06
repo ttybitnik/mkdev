@@ -4,14 +4,15 @@
 OMNI_NAME = changeme
 CONTAINER_ENGINE = changeme
 
-PODMAN_BIND_SOCKET = false
+RUN_BIND_SOCKET = false
+EXEC_SHELL_CMD = /bin/bash
 
 __USER = $(or $(USER),$(shell whoami))
 __AFFIX = omni-$(OMNI_NAME)
 __SOCKET = /run/user/$(shell id -u)/podman/podman.sock
 
 # Host targets/commands
-.PHONY: dev start stop clean serestore
+.PHONY: dev start open stop clean serestore
 
 dev:
 	$(info Building development container image...)
@@ -30,11 +31,16 @@ start:
 	--name mkdev-$(__AFFIX) \
 	--volume .:/home/$(__USER)/workspace:Z \
 	--volume mkdev-$(__AFFIX)-cache:/home/$(__USER)/.local \
-	$(if $(filter true,$(PODMAN_BIND_SOCKET)),--volume $(__SOCKET):$(__SOCKET)) \
-	$(if $(filter true,$(PODMAN_BIND_SOCKET)),--env CONTAINER_HOST=unix://$(__SOCKET)) \
+	$(if $(filter true,$(RUN_BIND_SOCKET)),--volume $(__SOCKET):$(__SOCKET)) \
+	$(if $(filter true,$(RUN_BIND_SOCKET)),--env CONTAINER_HOST=unix://$(__SOCKET)) \
 	localhost/mkdev/$(__AFFIX):latest
 
 	@# $(CONTAINER_ENGINE) compose .mkdev/compose.yaml up -d
+
+open:
+	$(info "Opening development container...")
+
+	$(CONTAINER_ENGINE) exec -it mkdev-$(__AFFIX) $(EXEC_SHELL_CMD)
 
 stop:
 	$(info Stopping development container...)

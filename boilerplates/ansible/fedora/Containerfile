@@ -10,17 +10,21 @@ LABEL mkdev.name="ansible-fedora" \
 COPY .mkdev/*.txt /tmp/
 
 RUN dnf update -y && xargs -n 1 dnf install -y < /tmp/dnf.txt && dnf clean all \
-    && ln -s /usr/bin/podman-remote /usr/bin/podman \
     && adduser $USERNAME \
-    && chown $USERNAME:$USERNAME /tmp/*.txt
+    && mkdir -p /home/$USERNAME/.local/ansible \
+    && ln -s /home/$USERNAME/.local/ansible /home/$USERNAME/.ansible \
+    && ln -s /usr/bin/podman-remote /usr/bin/podman \
+    && chown -R $USERNAME:$USERNAME /tmp/*.txt /home/ttybitnik/.local/
 
 WORKDIR /home/$USERNAME/workspace
 
 USER $USERNAME
 
-ENV NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
+ENV PATH="/home/$USERNAME/.local/venv/bin:$PATH" \
+    NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
 
-RUN pip3 install --no-cache-dir -r /tmp/pip.txt
+RUN python3 -m venv /home/$USERNAME/.local/venv \
+    && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
 RUN xargs -n 1 npm install -g < /tmp/npm.txt && npm cache clean --force
 
 CMD ["/bin/bash", "-l"]
