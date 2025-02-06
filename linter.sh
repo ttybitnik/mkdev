@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # MKDEV - Boilerplates for isolated development environments
-# Copyright (C) 2024 Vinícius Moraes <vinicius.moraes@eternodevir.com>
+# Copyright (C) 2024-2025 Vinícius Moraes <vinicius.moraes@eternodevir.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,8 +41,8 @@ makefiles_assert_sections() {
     sections=(
 	["Host"]="# Host targets/commands"
 	["Container"]="# Container targets/commands"
-	[".PHONY"]=".PHONY: dev start stop clean serestore"
-	[".PHONY"]=".PHONY: lint test build run deploy debug distclean"
+	[".PHONY_HOST"]=".PHONY: dev start open stop clean serestore"
+	[".PHONY_CONTAINER"]=".PHONY: lint test build run deploy debug distclean"
     )
 
     for sec in "${!sections[@]}"; do
@@ -188,7 +188,7 @@ ci_output() {
 check_failures() {
     if (( failure_count > 0 )); then
 	local word="issue"
-	(( failure_count == 1 )) && word+="s"
+	(( failure_count > 1 )) && word+="s"
 	printf "%s: checks failed: %d %s found.\n" \
 	       "$0" \
 	       "$failure_count" \

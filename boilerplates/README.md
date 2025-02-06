@@ -39,6 +39,7 @@
 
 - **`dev`**: Target for building the development container image.
 - **`start`**: Target for starting the container.
+- **`open`**: Target for opening the container.
 - **`stop`**: Target for stopping the container.
 - **`clean`**: Target for removing the container and image.
 - **`serestore`** (optional): Target for restoring SELinux context and permissions.

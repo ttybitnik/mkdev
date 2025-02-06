@@ -80,6 +80,7 @@ repositories/
 
 - **`make dev`**: Build the container image defined in `.mkdev/Containerfile`.
 - **`make start`**: Start the mkdev container, passing the current working directory as a bind mount.
+- **`make open`**: Open an interactive shell into the mkdev container.
 - **`make stop`**: Stop the mkdev container.
 - **`make clean`**: Remove the mkdev container and its artifacts. Executes the `distclean` target first.
 - **`make serestore`**: Restore project files context on SELinux host systems.
