@@ -38,7 +38,7 @@ start:
 	@# $(CONTAINER_ENGINE) compose .mkdev/compose.yaml up -d
 
 open:
-	$(info "Opening development container...")
+	$(info Opening development container...)
 
 	$(CONTAINER_ENGINE) exec -it mkdev-$(__AFFIX) $(EXEC_SHELL_CMD)
 
