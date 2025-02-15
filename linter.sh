@@ -91,6 +91,7 @@ makefiles_assert_targets() {
     targets=(
 	["dev"]="dev:"
 	["start"]="start:"
+	["open"]="open:"
 	["stop"]="stop:"
 	["clean"]="clean: distclean"
 	["serestore"]="serestore:"
