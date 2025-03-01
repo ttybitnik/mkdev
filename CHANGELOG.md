@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/ttybitnik/mkdev/compare/v0.4.0...v0.5.0) (2025-03-01)
+
+
+### Features
+
+* **ansible:** add molecule to test target ([e47f686](https://github.com/ttybitnik/mkdev/commit/e47f6862347cfad2dbd506b895633166ebfb2053))
+* **ci:** automate docs generation ([f98490e](https://github.com/ttybitnik/mkdev/commit/f98490ed5cf16732331f8270c12c45ceae88ddeb))
+* **project:** add open command ([ed2666b](https://github.com/ttybitnik/mkdev/commit/ed2666b38c981a53f77f2b1fc680db3076b34eb7))
+
 ## [0.4.0](https://github.com/ttybitnik/mkdev/compare/v0.3.0...v0.4.0) (2025-02-01)
 
 
