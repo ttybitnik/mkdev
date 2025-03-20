@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Automate releases based on conventional commits
         id: release
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@a02a34c4d625f9be7cb89156071d8567266a2445  # v4.2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: configs/release-please-config.json
@@ -95,7 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout default branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
       - name: Run update scripts as fallback and push any changes
         id: fallback
         uses: ./.github/actions/fallback-updates
