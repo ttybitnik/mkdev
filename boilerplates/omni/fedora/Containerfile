@@ -19,10 +19,12 @@ USER $USERNAME
 
 ENV GOPATH="/home/$USERNAME/.local/share/go" \
     GOBIN="/home/$USERNAME/.local/bin" \
-    NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
+    NPM_CONFIG_PREFIX="/home/$USERNAME/.local" \
+    PATH="/home/$USERNAME/.local/venv/bin:$PATH"
 
 RUN xargs -n 1 go install < /tmp/go.txt
-RUN pip3 install --no-cache-dir -r /tmp/pip.txt
+RUN python3 -m venv /home/$USERNAME/.local/venv \
+    && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
 RUN xargs -n 1 npm install -g < /tmp/npm.txt && npm cache clean --force
 
 CMD ["/bin/bash", "-l"]
