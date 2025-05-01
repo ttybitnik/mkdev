@@ -1,0 +1,14 @@
+gcc
+gcc-c++
+gmp
+gmp-devel
+make
+ncurses
+ncurses-compat-libs
+xz
+perl
+git
+make
+ripgrep
+ormolu
+hlint

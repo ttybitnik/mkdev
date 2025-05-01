@@ -1,0 +1,30 @@
+# MKDEV 0.5.0 (x-release-please-version)
+FROM docker.io/fedora:latest
+
+ARG USERNAME=mkdev
+
+LABEL mkdev.name="haskell-fedora" \
+      mkdev.summary="Boilerplate with general tools for developing Haskell-related projects" \
+      mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
+
+COPY .mkdev/*.txt /tmp/
+
+RUN dnf update -y && xargs -n 1 dnf install -y < /tmp/dnf.txt && dnf clean all \
+    && adduser $USERNAME \
+    && chown $USERNAME:$USERNAME /tmp/*.txt
+
+WORKDIR /home/$USERNAME/workspace
+
+USER $USERNAME
+
+ENV BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
+    BOOTSTRAP_HASKELL_CABAL_XDG=1 \
+    BOOTSTRAP_HASKELL_INSTALL_NO_STACK=1 \
+    BOOTSTRAP_HASKELL_INSTALL_NO_STACK_HOOK=1 \
+    GHCUP_USE_XDG_DIRS=1 \
+    PATH="/home/$USERNAME/.local/bin:$PATH"
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+RUN xargs -n 1 ghcup install < /tmp/ghcup.txt
+
+CMD ["/bin/bash", "-l"]
