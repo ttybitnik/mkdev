@@ -17,8 +17,8 @@ WORKDIR /home/$USERNAME/workspace
 
 USER $USERNAME
 
-ENV NPM_CONFIG_PREFIX="/home/$USERNAME/.local" \
-    PATH="/home/$USERNAME/.local/bin:$PATH"
+ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
+    NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
 
 RUN xargs -n 1 npm install -g < /tmp/npm.txt && npm cache clean --force
 

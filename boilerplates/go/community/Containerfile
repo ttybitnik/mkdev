@@ -23,7 +23,8 @@ RUN chown $USERNAME:$USERNAME ./go.mod ./go.sum
 
 USER $USERNAME
 
-ENV GOPATH=/home/$USERNAME/go \
+ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
+    GOPATH=/home/$USERNAME/go \
     GOBIN="/home/$USERNAME/.local/bin"
 
 RUN xargs -n 1 go install < /tmp/go.txt

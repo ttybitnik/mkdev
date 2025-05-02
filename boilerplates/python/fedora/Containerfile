@@ -17,6 +17,8 @@ WORKDIR /home/$USERNAME/workspace
 
 USER $USERNAME
 
+ENV PATH="/home/$USERNAME/.local/bin:$PATH"
+
 RUN pip3 install --no-cache-dir -r /tmp/pip.txt
 
 CMD ["/bin/bash", "-l"]

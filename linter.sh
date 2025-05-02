@@ -156,6 +156,7 @@ containerfiles_assert_instructions() {
 	["LABEL"]="mkdev.name="
 	["WORKDIR"]='/home/$USERNAME/workspace'
 	["USER"]='$USERNAME'
+	["ENV"]='PATH="/home/$USERNAME/.local/bin:$PATH"'
 	["CMD"]='["/bin/bash", "-l"]'
     )
 
