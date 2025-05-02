@@ -1,0 +1,5 @@
+git
+make
+ripgrep
+ormolu
+hlint
