@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.0](https://github.com/ttybitnik/mkdev/compare/v0.5.0...v0.6.0) (2025-05-02)
+
+
+### Features
+
+* **haskell:** add community boilerplates ([2837b22](https://github.com/ttybitnik/mkdev/commit/2837b220b7c1082f4c43d8ea55439b3768b4ca6b))
+* **haskell:** add fedora boilerplates ([fed17a7](https://github.com/ttybitnik/mkdev/commit/fed17a72755703feea37af3cbd441314cc5b2c0f))
+* **linter:** assert env instruction for PATH ([2cf6dff](https://github.com/ttybitnik/mkdev/commit/2cf6dff10cb008d8eae8d7f5bbd3151da1cae0ab))
+
 ## [0.5.0](https://github.com/ttybitnik/mkdev/compare/v0.4.0...v0.5.0) (2025-03-19)
 
 
