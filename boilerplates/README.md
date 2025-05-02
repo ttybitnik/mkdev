@@ -14,7 +14,7 @@
 - **`RUN`**: Commands for setting up the environment, including installing the **packages files**, removing cache files, and creating the non-root user.
 - **`WORKDIR`**: Path to the project files inside the container `/home/$USERNAME/workspace`.
 - **`USER`**: Specifies the user to the non-root `$USERNAME`.
-- **`ENV`**: Environment variables for the non-root user, primarily its local `$PATH` (`/home/$USERNAME/.local/bin:$PATH"`) and package managers (`/home/$USERNAME/.local/share/<manager>`).
+- **`ENV`**: Environment variables for the non-root user, primarily its local `$PATH` (`/home/$USERNAME/.local/bin:$PATH`) and package managers (`/home/$USERNAME/.local/share/<manager>`).
 - **`CMD`**: Default command to start the container `["/bin/bash", "-l"]`.
 
 ### Base image
