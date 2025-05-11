@@ -1,0 +1,29 @@
+# MKDEV 0.6.0 (x-release-please-version)
+FROM docker.io/fedora:latest
+
+ARG USERNAME=mkdev
+
+LABEL mkdev.name="elm-fedora" \
+      mkdev.summary="Boilerplate with general tools for developing Elm-related projects" \
+      mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
+
+COPY .mkdev/*.txt /tmp/
+
+RUN dnf update -y && xargs -n 1 dnf install -y < /tmp/dnf.txt && dnf clean all \
+    && adduser $USERNAME \
+    && chown $USERNAME:$USERNAME /tmp/*.txt
+
+WORKDIR /home/$USERNAME/workspace
+
+USER $USERNAME
+
+ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
+    NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
+
+RUN xargs -n 1 npm install -g < /tmp/npm.txt && npm cache clean --force
+RUN curl -L -o elm.gz "$(cat /tmp/curl.txt)" \
+    && gunzip elm.gz \
+    && chmod +x elm \
+    && mv elm /home/$USERNAME/.local/bin
+
+CMD ["/bin/bash", "-l"]
