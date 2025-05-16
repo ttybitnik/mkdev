@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/ttybitnik/mkdev/compare/v0.6.0...v0.7.0) (2025-05-16)
+
+
+### Features
+
+* **elm:** add fedora boilerplates ([92bf7ff](https://github.com/ttybitnik/mkdev/commit/92bf7ff3e2379c6cb63a537381b3ed7e8d3651ff))
+
 ## [0.6.0](https://github.com/ttybitnik/mkdev/compare/v0.5.0...v0.6.0) (2025-05-02)
 
 
