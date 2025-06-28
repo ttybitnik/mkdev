@@ -65,18 +65,25 @@ serestore:
 # Container targets/commands
 .PHONY: lint test build run deploy debug distclean
 
+ANSIBLELINT_OPTS += --config-file configs/ansible-lint
+ANSIBLELINT_OPTS += --ignore-file configs/ansible-lint-ignore
+
+YAMLLINT_OPTS += --config-file configs/yamllint .
+
+MOLECULE_OPTS += -c molecule/resources/molecule.yml
+MOLECULE_OPTS += $(if $(filter 1,$(debug)),-v)
+MOLECULE_OPTS += $(if $(cmd),$(cmd))
+MOLECULE_OPTS += $(if $(scenario),-s $(scenario))
+MOLECULE_OPTS += $(if $(platform),-p $(platform))
+
 lint:
 	$(info Running linters...)
-
-	ansible-lint
-	yamllint .
+	ansible-lint $(ANSIBLELINT_OPTS)
+	yamllint $(YAMLLINT_OPTS)
 
 test: lint
 	$(info Running tests...)
-
-	molecule -c molecule/resources/molecule.yml test \
-	$(if $(scenario),-s $(scenario)) \
-	$(if $(platform),-p $(platform))
+	molecule $(MOLECULE_OPTS)
 
 build: test
 	$(info Building...)
