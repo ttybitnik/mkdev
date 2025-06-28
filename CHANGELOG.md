@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0](https://github.com/ttybitnik/mkdev/compare/v0.6.0...v0.7.0) (2025-06-28)
+
+
+### Features
+
+* **ansible:** set command flags as variables ([d38e5de](https://github.com/ttybitnik/mkdev/commit/d38e5de9bcd5759bcfbfa55c6b7a149581e118ba))
+* **elm:** add fedora boilerplates ([92bf7ff](https://github.com/ttybitnik/mkdev/commit/92bf7ff3e2379c6cb63a537381b3ed7e8d3651ff))
+
+
+### Dependencies
+
+* **gh:** bump aquasecurity/trivy-action from 0.30.0 to 0.31.0 ([#9](https://github.com/ttybitnik/mkdev/issues/9)) ([a2ab9a8](https://github.com/ttybitnik/mkdev/commit/a2ab9a842e33ae960f901d5dc00f207410e402dd))
+
 ## [0.6.0](https://github.com/ttybitnik/mkdev/compare/v0.5.0...v0.6.0) (2025-05-02)
 
 
