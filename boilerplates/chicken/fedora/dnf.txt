@@ -1,0 +1,8 @@
+git
+make
+ripgrep
+chicken
+gcc
+clang
+clang-tools-extra
+gdb
