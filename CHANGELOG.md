@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/ttybitnik/mkdev/compare/v0.7.0...v0.8.0) (2025-07-30)
+
+
+### Features
+
+* **chicken:** add fedora boilerplates ([6deed5f](https://github.com/ttybitnik/mkdev/commit/6deed5f3d796a5f547f80e112425cd760107dde9))
+* **chicken:** set chicken-install and non-root env ([4701dbf](https://github.com/ttybitnik/mkdev/commit/4701dbf3cf715940bdb91fc0dffc60c4232efc67))
+
+
+### Dependencies
+
+* **gh:** bump aquasecurity/trivy-action from 0.31.0 to 0.32.0 ([#10](https://github.com/ttybitnik/mkdev/issues/10)) ([a0c77a8](https://github.com/ttybitnik/mkdev/commit/a0c77a89326e7c544ffe2bc696d7db7db7307db1))
+
 ## [0.7.0](https://github.com/ttybitnik/mkdev/compare/v0.6.0...v0.7.0) (2025-06-28)
 
 
