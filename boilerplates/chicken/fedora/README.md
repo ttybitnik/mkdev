@@ -1,15 +1,19 @@
 # chicken-fedora
 
-| dnf               |
-|:------------------|
-| git               |
-| make              |
-| ripgrep           |
-| chicken           |
-| gcc               |
-| clang             |
-| clang-tools-extra |
-| gdb               |
+| chicken | dnf               |
+|:--------|:------------------|
+| utf8    | git               |
+| srfi-1  | make              |
+| srfi-13 | ripgrep           |
+| srfi-69 | rlwrap            |
+|         | chicken           |
+|         | chicken-static    |
+|         | chicken-libs      |
+|         | gcc               |
+|         | clang             |
+|         | clang-tools-extra |
+|         | gdb               |
+|         | redhat-rpm-config |
 
 1. Create a `.mkdev` directory at the root of the project.
 2. Copy all the boilerplate files into the `.mkdev` directory.

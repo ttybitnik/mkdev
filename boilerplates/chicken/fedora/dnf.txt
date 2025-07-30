@@ -1,8 +1,12 @@
 git
 make
 ripgrep
+rlwrap
 chicken
+chicken-static
+chicken-libs
 gcc
 clang
 clang-tools-extra
 gdb
+redhat-rpm-config
