@@ -99,4 +99,4 @@ debug: test
 distclean:
 	$(info Cleaning artifacts...)
 
-	rm -rf ./dist/
+	$(RM) ./dist/*

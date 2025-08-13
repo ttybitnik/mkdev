@@ -93,6 +93,6 @@ debug: test
 distclean:
 	$(info Cleaning artifacts...)
 
-	rm -rf ./.pytest_cache/
-	rm -rf ./.ruff_cache/
-	rm -rf ./__pycache__/
+	$(RM) ./.pytest_cache/*
+	$(RM) ./.ruff_cache/*
+	$(RM) ./__pycache__/*

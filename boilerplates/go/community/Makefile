@@ -98,7 +98,7 @@ debug: test
 distclean:
 	$(info Cleaning artifacts...)
 
-	rm -rf ./$(PROJECT_NAME) ./dist/
+	$(RM) ./$(PROJECT_NAME) ./dist/*
 
 
 update:
