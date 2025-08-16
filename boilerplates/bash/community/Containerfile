@@ -1,4 +1,4 @@
-# MKDEV 0.8.0 (x-release-please-version)
+# MKDEV 0.9.0 (x-release-please-version)
 FROM docker.io/bash:latest
 
 ARG USERNAME=mkdev
