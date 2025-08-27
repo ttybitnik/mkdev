@@ -139,7 +139,7 @@ makefiles_assert_variables() {
 
     for var in "${!variables[@]}"; do
 	local expected="${variables[$var]}"
-	if ! grep -qe "^${var} = ${expected}$" "$file" 2>/dev/null; then
+	if ! grep -qe "^${var}.*= ${expected}$" "$file" 2>/dev/null; then
 	    printf "%s: missing or incorrect variable: %s. Expected: %s.\n" \
 		   "$file" "$var" "$expected"
 	    ((failure_count++))

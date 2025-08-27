@@ -1,15 +1,16 @@
 # MKDEV 0.8.0 (x-release-please-version)
 # See <https://github.com/ttybitnik/mkdev> for more information.
 
-OMNI_NAME = changeme
+OMNI_NAME        = changeme
 CONTAINER_ENGINE = changeme
 
-RUN_BIND_SOCKET = false
-EXEC_SHELL_CMD = /bin/bash
+RUN_BIND_SOCKET  = fals
+EXEC_SHELL_CMD  := /bin/bash
+RM              := /bin/rm -f
 
-__USER = $(or $(USER),$(shell whoami))
-__AFFIX = omni-$(OMNI_NAME)
-__SOCKET = /run/user/$(shell id -u)/podman/podman.sock
+__USER   := $(or $(USER),$(shell whoami))
+__AFFIX  := omni-$(OMNI_NAME)
+__SOCKET := /run/user/$(shell id -u)/podman/podman.sock
 
 # Host targets/commands
 .PHONY: dev start open stop clean serestore

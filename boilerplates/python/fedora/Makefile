@@ -1,14 +1,15 @@
 # MKDEV 0.8.0 (x-release-please-version)
 # See <https://github.com/ttybitnik/mkdev> for more information.
 
-PROJECT_NAME = changeme
+PROJECT_NAME     = changeme
 CONTAINER_ENGINE = changeme
 
-RUN_BIND_SOCKET = false
-EXEC_SHELL_CMD = /bin/bash
+RUN_BIND_SOCKET  = false
+EXEC_SHELL_CMD  := /bin/bash
+RM              := /bin/rm -f
 
-__USER = $(or $(USER),$(shell whoami))
-__SOCKET = /run/user/$(shell id -u)/podman/podman.sock
+__USER   := $(or $(USER),$(shell whoami))
+__SOCKET := /run/user/$(shell id -u)/podman/podman.sock
 
 # Host targets/commands
 .PHONY: dev start open stop clean serestore
@@ -93,6 +94,6 @@ debug: test
 distclean:
 	$(info Cleaning artifacts...)
 
-	$(RM) ./.pytest_cache/*
-	$(RM) ./.ruff_cache/*
-	$(RM) ./__pycache__/*
+	$(RM) -- ./.pytest_cache/*
+	$(RM) -- ./.ruff_cache/*
+	$(RM) -- ./__pycache__/*
