@@ -121,16 +121,24 @@ makefiles_assert_variables() {
 
     if [[ "$type" == "project" ]]; then
 	variables=(
-	    ["PROJECT_NAME"]="changeme"
-	    ["CONTAINER_ENGINE"]="changeme"
-	    ["__USER"]='$(or $(USER),$(shell whoami))'
+	    ['PROJECT_NAME']='changeme'
+	    ['CONTAINER_ENGINE']='changeme'
+	    ['RUN_BIND_SOCKET']='false'
+	    ['EXEC_SHELL_CMD']='/bin/bash'
+	    ['RM']='/bin/rm -f'
+	    ['__USER']='$(or $(USER),$(shell whoami))'
+	    ['__SOCKET']='/run/user/$(shell id -u)/podman/podman.sock'
 	)
     elif [[ "$type" == "omni" ]]; then
 	variables=(
-	    ["OMNI_NAME"]="changeme"
-	    ["CONTAINER_ENGINE"]="changeme"
-	    ["__USER"]='$(or $(USER),$(shell whoami))'
-	    ["__AFFIX"]='omni-$(OMNI_NAME)'
+	    ['OMNI_NAME']='changeme'
+	    ['CONTAINER_ENGINE']='changeme'
+	    ['RUN_BIND_SOCKET']='false'
+	    ['EXEC_SHELL_CMD']='/bin/bash'
+	    ['RM']='/bin/rm -f'
+	    ['__USER']='$(or $(USER),$(shell whoami))'
+	    ['__AFFIX']='omni-$(OMNI_NAME)'
+	    ['__SOCKET']='/run/user/$(shell id -u)/podman/podman.sock'
 	)
     else
 	printf "Unknown type: %s\n" "$type" >&2

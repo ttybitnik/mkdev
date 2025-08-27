@@ -4,7 +4,7 @@
 OMNI_NAME        = changeme
 CONTAINER_ENGINE = changeme
 
-RUN_BIND_SOCKET  = fals
+RUN_BIND_SOCKET  = false
 EXEC_SHELL_CMD  := /bin/bash
 RM              := /bin/rm -f
 
