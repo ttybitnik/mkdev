@@ -39,10 +39,10 @@ makefiles_assert_sections() {
     local -A sections
 
     sections=(
-	["Host"]="# Host targets/commands"
-	["Container"]="# Container targets/commands"
-	[".PHONY_HOST"]=".PHONY: dev start open stop clean serestore"
-	[".PHONY_CONTAINER"]=".PHONY: lint test build run deploy debug distclean"
+	['Host']='# Host targets/commands'
+	['Container']='# Container targets/commands'
+	['.PHONY_HOST']='.PHONY: dev start open stop clean serestore'
+	['.PHONY_CONTAINER']='.PHONY: lint test build run deploy debug distclean'
     )
 
     for sec in "${!sections[@]}"; do
@@ -60,18 +60,18 @@ makefiles_assert_infos() {
     local -A infos
 
     infos=(
-	["dev"]='$(info Building development container image...)'
-	["start"]='$(info Starting development container...)'
-	["stop"]='$(info Stopping development container...)'
-	["clean"]='$(info Removing development container and image...)'
-	["serestore"]='$(info Restoring project SELinux context and permissions...)'
-	["lint"]='$(info Running linters...)'
-	["test"]='$(info Running tests...)'
-	["build"]='$(info Building...)'
-	["run"]='$(info Running...)'
-	["deploy"]='$(info Deploying...)'
-	["debug"]='$(info Debugging tasks...)'
-	["distclean"]='$(info Cleaning artifacts...)'
+	['dev']='$(info Building development container image...)'
+	['start']='$(info Starting development container...)'
+	['stop']='$(info Stopping development container...)'
+	['clean']='$(info Removing development container and image...)'
+	['serestore']='$(info Restoring project SELinux context and permissions...)'
+	['lint']='$(info Running linters...)'
+	['test']='$(info Running tests...)'
+	['build']='$(info Building...)'
+	['run']='$(info Running...)'
+	['deploy']='$(info Deploying...)'
+	['debug']='$(info Debugging tasks...)'
+	['distclean']='$(info Cleaning artifacts...)'
     )
 
     for inf in "${!infos[@]}"; do
@@ -89,19 +89,19 @@ makefiles_assert_targets() {
     local -A targets
 
     targets=(
-	["dev"]="dev:"
-	["start"]="start:"
-	["open"]="open:"
-	["stop"]="stop:"
-	["clean"]="clean: distclean"
-	["serestore"]="serestore:"
-	["lint"]="lint:"
-	["test"]="test: lint"
-	["build"]="build: test"
-	["run"]="run: build"
-	["deploy"]="deploy: build"
-	["debug"]="debug: test"
-	["distclean"]="distclean:"
+	['dev']='dev:'
+	['start']='start:'
+	['open']='open:'
+	['stop']='stop:'
+	['clean']='clean: distclean'
+	['serestore']='serestore:'
+	['lint']='lint:'
+	['test']='test: lint'
+	['build']='build: test'
+	['run']='run: build'
+	['deploy']='deploy: build'
+	['debug']='debug: test'
+	['distclean']='distclean:'
     )
 
     for tgt in "${!targets[@]}"; do
@@ -160,12 +160,12 @@ containerfiles_assert_instructions() {
     local -A instructions
 
     instructions=(
-	["ARG"]="USERNAME=mkdev"
-	["LABEL"]="mkdev.name="
-	["WORKDIR"]='/home/$USERNAME/workspace'
-	["USER"]='$USERNAME'
-	["ENV"]='PATH="/home/$USERNAME/.local/bin:$PATH"'
-	["CMD"]='["/bin/bash", "-l"]'
+	['ARG']='USERNAME=mkdev'
+	['LABEL']='mkdev.name='
+	['WORKDIR']='/home/$USERNAME/workspace'
+	['USER']='$USERNAME'
+	['ENV']='PATH="/home/$USERNAME/.local/bin:$PATH"'
+	['CMD']='["/bin/bash", "-l"]'
     )
 
     for ins in "${!instructions[@]}"; do
