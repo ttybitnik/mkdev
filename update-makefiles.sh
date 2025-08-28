@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # MKDEV - Boilerplates for isolated development environments
-# Copyright (C) 2024 Vinícius Moraes <vinicius.moraes@eternodevir.com>
+# Copyright (C) 2024, 2025 Vinícius Moraes <vinicius.moraes@eternodevir.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,7 +20,8 @@
 
 shopt -s extglob
 
-update_makefiles() {
+update_makefiles()
+{
     local stop_pattern
     local content
     local existing_content
@@ -48,7 +49,8 @@ update_makefiles() {
     fi
 }
 
-ci_output() {
+ci_output()
+{
     if [ -n "$CI" ]; then
 	local status_makefiles="$1"
 	if [[ "$status_makefiles" == "true" && "$RUN_MODE" == "push" ]]; then

@@ -22,7 +22,8 @@
 shopt -s extglob
 failure_count=0
 
-assert_files() {
+assert_files()
+{
     local dir="$1"
     local files=("README.md" "Containerfile" "Makefile")
 
@@ -34,7 +35,8 @@ assert_files() {
     done
 }
 
-makefiles_assert_sections() {
+makefiles_assert_sections()
+{
     local file="$1"
     local -A sections
 
@@ -55,7 +57,8 @@ makefiles_assert_sections() {
     done
 }
 
-makefiles_assert_infos() {
+makefiles_assert_infos()
+{
     local file="$1"
     local -A infos
 
@@ -84,7 +87,8 @@ makefiles_assert_infos() {
     done
 }
 
-makefiles_assert_targets() {
+makefiles_assert_targets()
+{
     local file="$1"
     local -A targets
 
@@ -114,7 +118,8 @@ makefiles_assert_targets() {
     done
 }
 
-makefiles_assert_variables() {
+makefiles_assert_variables()
+{
     local file="$1"
     local type="$2"
     local -A variables
@@ -155,7 +160,8 @@ makefiles_assert_variables() {
     done
 }
 
-containerfiles_assert_instructions() {
+containerfiles_assert_instructions()
+{
     local file="$1"
     local -A instructions
 
@@ -178,7 +184,8 @@ containerfiles_assert_instructions() {
     done
 }
 
-ci_output() {
+ci_output()
+{
     if [ -n "$CI" ]; then
 	local status_linter="$1"
 
@@ -195,7 +202,8 @@ ci_output() {
     fi
 }
 
-check_failures() {
+check_failures()
+{
     if (( failure_count > 0 )); then
 	local word="issue"
 	(( failure_count > 1 )) && word+="s"
@@ -219,9 +227,9 @@ for mk in ./*.mk; do
     makefiles_assert_targets "$mk"
 
     if [[ "$mk" == "./Dev.mk" ]]; then
-        makefiles_assert_variables "$mk" "project"
+	makefiles_assert_variables "$mk" "project"
     elif [[ "$mk" == "./Omni.mk" ]]; then
-        makefiles_assert_variables "$mk" "omni"
+	makefiles_assert_variables "$mk" "omni"
     fi
 done
 
