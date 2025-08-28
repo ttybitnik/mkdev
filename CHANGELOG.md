@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.0](https://github.com/ttybitnik/mkdev/compare/v0.8.0...v0.9.0) (2025-08-28)
+
+
+### Features
+
+* **boilerplates:** use implicit variable for distclean ([aee41fc](https://github.com/ttybitnik/mkdev/commit/aee41fcbc5e5f00905816489927cda5c600b1d13))
+* **linter:** improve variables assertions ([cb21383](https://github.com/ttybitnik/mkdev/commit/cb21383fa6b88ddbd9ee6f804f62da65b940cdf8))
+* **project:** improve variable assignments and options delimiters ([7e3cf96](https://github.com/ttybitnik/mkdev/commit/7e3cf96a846d67ca6fb26da5dbf206a86fa89e6a))
+
+
+### Dependencies
+
+* **gh:** bump actions/checkout from 4 to 5 ([#13](https://github.com/ttybitnik/mkdev/issues/13)) ([b5ea660](https://github.com/ttybitnik/mkdev/commit/b5ea6605ca5bc83fa9ff9abb8d6c76324506b46c))
+* **gh:** bump googleapis/release-please-action from 4.2.0 to 4.3.0 ([#14](https://github.com/ttybitnik/mkdev/issues/14)) ([ce13db8](https://github.com/ttybitnik/mkdev/commit/ce13db8f5f9165b939eac3910a2c42620cbc36c4))
+
 ## [0.8.0](https://github.com/ttybitnik/mkdev/compare/v0.7.0...v0.8.0) (2025-07-30)
 
 
