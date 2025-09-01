@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.10.0](https://github.com/ttybitnik/mkdev/compare/v0.9.0...v0.10.0) (2025-09-01)
+
+
+### Features
+
+* **c:** add strace and ltrace packages ([85fd88d](https://github.com/ttybitnik/mkdev/commit/85fd88d1ea260fcdefc98e67fc284d1f2bb0abcb))
+* **chicken:** add strace and ltrace packages ([bbca1ec](https://github.com/ttybitnik/mkdev/commit/bbca1ec8239bec045cdf1c4303c285fc94c3e768))
+* **omni:** add strace and ltrace packages ([cafebf4](https://github.com/ttybitnik/mkdev/commit/cafebf49d9786c690b001bdef639b01046c7b37a))
+
 ## [0.9.0](https://github.com/ttybitnik/mkdev/compare/v0.8.0...v0.9.0) (2025-08-28)
 
 
