@@ -9,4 +9,6 @@ gcc
 clang
 clang-tools-extra
 gdb
+strace
+ltrace
 redhat-rpm-config
