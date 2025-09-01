@@ -17,6 +17,8 @@
 | clang             |                                                            |                                  |              |
 | clang-tools-extra |                                                            |                                  |              |
 | gdb               |                                                            |                                  |              |
+| strace            |                                                            |                                  |              |
+| ltrace            |                                                            |                                  |              |
 | podman-remote     |                                                            |                                  |              |
 
 1. Create a `.mkdev` directory at the root of the project.

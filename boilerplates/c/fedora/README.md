@@ -9,6 +9,8 @@
 | clang             |
 | clang-tools-extra |
 | gdb               |
+| strace            |
+| ltrace            |
 
 1. Create a `.mkdev` directory at the root of the project.
 2. Copy all the boilerplate files into the `.mkdev` directory.

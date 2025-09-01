@@ -13,6 +13,8 @@
 |         | clang             |
 |         | clang-tools-extra |
 |         | gdb               |
+|         | strace            |
+|         | ltrace            |
 |         | redhat-rpm-config |
 
 1. Create a `.mkdev` directory at the root of the project.
