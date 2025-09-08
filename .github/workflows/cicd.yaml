@@ -71,7 +71,7 @@ jobs:
         run: ./linter.sh
       - name: Check Containerfiles with hadolint
         id: hadolint
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.2.0
         with:
           dockerfile: Containerfile
           recursive: true
