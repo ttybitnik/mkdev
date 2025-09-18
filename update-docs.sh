@@ -28,26 +28,26 @@ read_txt_files()
     declare -gi max_rows=0
 
     if [ ${#txt_files[@]} -eq 0 ]; then
-	printf "No .txt files found in the current directory.\n"
-	exit 1
+        printf "No .txt files found in the current directory.\n"
+        exit 1
     fi
 
     for file in "${txt_files[@]}"; do
-	local max_width=0
+        local max_width=0
 
-	mapfile -t temp_array < "$file"
-	packages["$file"]="${temp_array[*]}"
+        mapfile -t temp_array <"$file"
+        packages["$file"]="${temp_array[*]}"
 
-	if [ ${#temp_array[@]} -gt "$max_rows" ]; then
-	    max_rows=${#temp_array[@]}
-	fi
+        if [ ${#temp_array[@]} -gt "$max_rows" ]; then
+            max_rows=${#temp_array[@]}
+        fi
 
-	for package in "${temp_array[@]}"; do
-	    if [ ${#package} -gt "$max_width" ]; then
-		max_width=${#package}
-	    fi
-	done
-	column_widths["$file"]=$max_width
+        for package in "${temp_array[@]}"; do
+            if [ ${#package} -gt "$max_width" ]; then
+                max_width=${#package}
+            fi
+        done
+        column_widths["$file"]=$max_width
     done
 }
 
@@ -57,62 +57,61 @@ generate_markdown()
     local txt_files=(*.txt)
 
     {
-	printf "# %s\n\n" "$header_title"
+        printf "# %s\n\n" "$header_title"
 
-	printf "|"
-	for file in "${txt_files[@]}"; do
-	    column_name="${file%.txt}"
-	    width=${column_widths["$file"]}
-	    if [ ${#column_name} -gt "$width" ]; then
-		width=${#column_name}
-	    fi
-	    printf " %-${width}s |" "$column_name"
-	done
-	printf "\n"
+        printf "|"
+        for file in "${txt_files[@]}"; do
+            column_name="${file%.txt}"
+            width=${column_widths["$file"]}
+            if [ ${#column_name} -gt "$width" ]; then
+                width=${#column_name}
+            fi
+            printf " %-${width}s |" "$column_name"
+        done
+        printf "\n"
 
-	printf "|"
-	for file in "${txt_files[@]}"; do
-	    width=${column_widths["$file"]}
-	    separator_width=$((width + 1))
-	    printf ":%-${separator_width}s|" | tr ' ' '-'
-	done
-	printf "\n"
+        printf "|"
+        for file in "${txt_files[@]}"; do
+            width=${column_widths["$file"]}
+            separator_width=$((width + 1))
+            printf ":%-${separator_width}s|" | tr ' ' '-'
+        done
+        printf "\n"
 
-	for ((i = 0; i < max_rows; i++)); do
-	    printf "|"
-	    for file in "${txt_files[@]}"; do
-		IFS=' ' read -r -a package_list <<< "${packages["$file"]}"
-		package="${package_list[$i]:-""}"
-		width=${column_widths["$file"]}
-		printf " %-${width}s |" "$package"
-	    done
-	    printf "\n"
-	done
+        for ((i = 0; i < max_rows; i++)); do
+            printf "|"
+            for file in "${txt_files[@]}"; do
+                IFS=' ' read -r -a package_list <<<"${packages["$file"]}"
+                package="${package_list[$i]:-""}"
+                width=${column_widths["$file"]}
+                printf " %-${width}s |" "$package"
+            done
+            printf "\n"
+        done
 
-	printf "\n"
-	printf "1. Create a \`.mkdev\` directory at the root of the project.\n"
-	printf "2. Copy all the boilerplate files into the \`.mkdev\` directory.\n"
-	printf "3. Move the \`Makefile\` to the root of the project.\n\n"
-	printf "*For more information, see <https://github.com/ttybitnik/mkdev>.*\n"
-    } > "$OUTPUT_FILE"
+        printf "\n"
+        printf "1. Create a \`.mkdev\` directory at the root of the project.\n"
+        printf "2. Copy all the boilerplate files into the \`.mkdev\` directory.\n"
+        printf "3. Move the \`Makefile\` to the root of the project.\n\n"
+        printf "*For more information, see <https://github.com/ttybitnik/mkdev>.*\n"
+    } >"$OUTPUT_FILE"
 }
 
 ci_output()
 {
     if [ -n "$CI" ]; then
-	local status_readme="$1"
-	if [[ "$status_readme" == "true" && "$RUN_MODE" == "push" ]]; then
-	    printf "::notice title=%s::boilerplates updated successfully.\n" \
-		   "$0"
-	fi
-	printf "readme=%s\n" "$status_readme" >> "$GITHUB_OUTPUT"
+        local status_readme="$1"
+        if [[ "$status_readme" == "true" && "$RUN_MODE" == "push" ]]; then
+            printf "::notice title=%s::boilerplates updated successfully.\n" "$0"
+        fi
+        printf "readme=%s\n" "$status_readme" >>"$GITHUB_OUTPUT"
     fi
 }
 
 for md in ./boilerplates/*/*/README.md; do
     dir_path=$(dirname "$md")
     header_title=$(printf "%s" "$dir_path" \
-		       | sed 's|\./boilerplates/\([^/]*\)/\([^/]*\)$|\1-\2|')
+                       | sed 's|\./boilerplates/\([^/]*\)/\([^/]*\)$|\1-\2|')
 
     cd "$dir_path" || exit 1
     read_txt_files

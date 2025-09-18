@@ -29,35 +29,32 @@ update_makefiles()
     content=$(awk "NR == 1 {next} /$stop_pattern/ {print; exit} 1" "$1")
 
     if [[ "$1" == "Dev.mk" ]]; then
-	for mk in ./boilerplates/!(*omni)/*/Makefile; do
-	    existing_1stline=$(head -1 "$mk")
-	    existing_content=$(awk "/$stop_pattern/ {rest=1; next} rest" "$mk")
-	    printf "%s\n%s\n%s\n" \
-		   "$existing_1stline" "$content" "$existing_content" \
-		   > "$mk"
-	done
+        for mk in ./boilerplates/!(*omni)/*/Makefile; do
+            existing_1stline=$(head -1 "$mk")
+            existing_content=$(awk "/$stop_pattern/ {rest=1; next} rest" "$mk")
+            printf "%s\n%s\n%s\n" \
+                   "$existing_1stline" "$content" "$existing_content" >"$mk"
+        done
     fi
 
     if [[ "$1" == "Omni.mk" ]]; then
-	for mk in ./boilerplates/omni/*/Makefile; do
-	    existing_1stline=$(head -1 "$mk")
-	    existing_content=$(awk "/$stop_pattern/ {rest=1; next} rest" "$mk")
-	    printf "%s\n%s\n%s\n" \
-		   "$existing_1stline" "$content" "$existing_content" \
-		   > "$mk"
-	done
+        for mk in ./boilerplates/omni/*/Makefile; do
+            existing_1stline=$(head -1 "$mk")
+            existing_content=$(awk "/$stop_pattern/ {rest=1; next} rest" "$mk")
+            printf "%s\n%s\n%s\n" \
+                   "$existing_1stline" "$content" "$existing_content" >"$mk"
+        done
     fi
 }
 
 ci_output()
 {
     if [ -n "$CI" ]; then
-	local status_makefiles="$1"
-	if [[ "$status_makefiles" == "true" && "$RUN_MODE" == "push" ]]; then
-	    printf "::notice title=%s::boilerplates updated successfully.\n" \
-		   "$0"
-	fi
-	printf "makefiles=%s\n" "$status_makefiles" >> "$GITHUB_OUTPUT"
+        local status_makefiles="$1"
+        if [[ "$status_makefiles" == "true" && "$RUN_MODE" == "push" ]]; then
+            printf "::notice title=%s::boilerplates updated successfully.\n" "$0"
+        fi
+        printf "makefiles=%s\n" "$status_makefiles" >>"$GITHUB_OUTPUT"
     fi
 }
 
