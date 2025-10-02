@@ -1,0 +1,28 @@
+# MKDEV 0.9.0 (x-release-please-version)
+FROM docker.io/fedora:latest
+
+ARG USERNAME=mkdev
+
+LABEL mkdev.name="rust-fedora" \
+      mkdev.summary="Boilerplate with general tools for developing Rust-related projects" \
+      mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
+
+COPY .mkdev/*.txt /tmp/
+
+RUN dnf update -y && xargs -n 1 dnf install -y < /tmp/dnf.txt && dnf clean all \
+    && adduser $USERNAME \
+    && chown $USERNAME:$USERNAME /tmp/*.txt
+
+WORKDIR /home/$USERNAME/workspace
+
+USER $USERNAME
+
+ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
+    CARGO_HOME="/home/$USERNAME/.local" \
+    RUSTUP_HOME="/home/$USERNAME/.local/share/rustup"
+
+# hadolint ignore=DL4006,SC3040
+RUN set -o pipefail && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN xargs -n 1 rustup component add < /tmp/rustup.txt
+
+CMD ["/bin/bash", "-l"]
