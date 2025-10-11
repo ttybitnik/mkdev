@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.10.0](https://github.com/ttybitnik/mkdev/compare/v0.9.0...v0.10.0) (2025-10-11)
+
+
+### Features
+
+* **c:** add strace and ltrace packages ([85fd88d](https://github.com/ttybitnik/mkdev/commit/85fd88d1ea260fcdefc98e67fc284d1f2bb0abcb))
+* **chicken:** add strace and ltrace packages ([bbca1ec](https://github.com/ttybitnik/mkdev/commit/bbca1ec8239bec045cdf1c4303c285fc94c3e768))
+* **omni:** add strace and ltrace packages ([cafebf4](https://github.com/ttybitnik/mkdev/commit/cafebf49d9786c690b001bdef639b01046c7b37a))
+* **rust:** add fedora boilerplates ([d489b3c](https://github.com/ttybitnik/mkdev/commit/d489b3c5821c71c013de3be6db33b1d8788397c6))
+
+
+### Dependencies
+
+* **gh:** bump aquasecurity/trivy-action from 0.32.0 to 0.33.1 ([#17](https://github.com/ttybitnik/mkdev/issues/17)) ([1207b23](https://github.com/ttybitnik/mkdev/commit/1207b23517db79c22e3fdce7dee63edcedba4b4c))
+* **gh:** bump hadolint/hadolint-action from 3.1.0 to 3.3.0 ([#19](https://github.com/ttybitnik/mkdev/issues/19)) ([846354b](https://github.com/ttybitnik/mkdev/commit/846354b1c697cd084142daf565190b252286608d))
+
 ## [0.9.0](https://github.com/ttybitnik/mkdev/compare/v0.8.0...v0.9.0) (2025-08-28)
 
 
