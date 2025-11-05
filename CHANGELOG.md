@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/ttybitnik/mkdev/compare/v0.10.0...v0.11.0) (2025-11-05)
+
+
+### Features
+
+* **gh:** set immutable releases ([e7a17fd](https://github.com/ttybitnik/mkdev/commit/e7a17fd72ef68ee569bb985efb7b6c799f8c1e02))
+
 ## [0.10.0](https://github.com/ttybitnik/mkdev/compare/v0.9.0...v0.10.0) (2025-10-11)
 
 
