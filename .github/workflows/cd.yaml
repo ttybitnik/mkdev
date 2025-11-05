@@ -1,0 +1,32 @@
+---
+name: CI/CD
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  call-ci:
+    permissions:
+      contents: read
+      pull-requests: read
+      security-events: write
+    uses: ./.github/workflows/ci.yaml
+
+  semver:
+    permissions:
+      contents: write
+      pull-requests: write
+    needs: [call-ci]
+    uses: ttybitnik/pipelines/.github/workflows/semver.yaml@master
+    with:
+      commit-message: ${{ github.event.head_commit.message }}

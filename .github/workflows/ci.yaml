@@ -1,0 +1,36 @@
+---
+name: CI
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      codeql-enable:
+        description: "Whether to enable CodeQL job"
+        required: false
+        default: false
+        type: boolean
+  pull_request:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  schedule:
+    - cron: '0 1 1,16 * *'
+
+jobs:
+  container-checks:
+    permissions:
+      contents: read
+      pull-requests: read
+      # checks: write
+    uses: ttybitnik/pipelines/.github/workflows/yaml-checks.yaml@master
+    with:
+      mkdev-custom-enable: true
+
+  secops:
+    permissions:
+      contents: read
+      security-events: write
+    uses: ttybitnik/pipelines/.github/workflows/secops.yaml@master

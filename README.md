@@ -8,7 +8,7 @@ It enables a **consistent**, **open**, and **extensible** workflow by using `Con
 > — [Tower Guardian](https://imgflip.com/i/9gc41r), in a new take.
 
 [![release](https://img.shields.io/github/v/release/ttybitnik/mkdev)](https://github.com/ttybitnik/mkdev/releases/latest)
-[![ci/cd](https://github.com/ttybitnik/mkdev/actions/workflows/cicd.yaml/badge.svg)](https://github.com/ttybitnik/mkdev/actions/workflows/cicd.yaml)
+[![ci/cd](https://github.com/ttybitnik/mkdev/actions/workflows/cd.yaml/badge.svg)](https://github.com/ttybitnik/mkdev/actions/workflows/cd.yaml)
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
 **Example of resources on host system**:
