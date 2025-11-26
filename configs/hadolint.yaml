@@ -4,6 +4,11 @@ ignored:
   - DL3007  # latest (warning)
   - DL3059  # consecutive run (info)
   - DL3048  # label key (style) - bugged thus disabled
+  - DL3008  # apt version pinning
+  - DL3016  # npm version pinning
+  - DL3018  # apk version pinning
+  - DL3041  # dnf version pinning
+  - DL3062  # go version pinning
 label-schema:
   mkdev.name: text
   mkdev.summary: text
