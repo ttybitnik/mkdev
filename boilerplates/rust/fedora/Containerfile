@@ -8,6 +8,7 @@ LABEL mkdev.name="rust-fedora" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && adduser $USERNAME
 
@@ -23,6 +24,7 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
 RUN set -o pipefail && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/rustup.txt /tmp/
+# hadolint ignore=SC2046
 RUN rustup component add $(cat /tmp/rustup.txt)
 
 CMD ["/bin/bash", "-l"]

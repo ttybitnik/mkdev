@@ -8,6 +8,7 @@ LABEL mkdev.name="haskell-community" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/apt.txt /tmp/
+# hadolint ignore=SC2046
 RUN apt-get update && apt-get install --no-install-recommends -y $(cat /tmp/apt.txt) \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \

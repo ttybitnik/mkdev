@@ -8,6 +8,7 @@ LABEL mkdev.name="c-fedora" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && adduser $USERNAME
 

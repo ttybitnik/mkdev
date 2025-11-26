@@ -8,6 +8,7 @@ LABEL mkdev.name="omni-fedora" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && adduser $USERNAME
 
@@ -22,6 +23,7 @@ ENV PATH="/home/$USERNAME/.local/venv/bin:$PATH" \
     NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
+# hadolint ignore=SC2046
 RUN go install $(cat /tmp/go.txt)
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/pip.txt /tmp/
@@ -29,6 +31,7 @@ RUN python3 -m venv /home/$USERNAME/.local/venv \
     && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/npm.txt /tmp/
+# hadolint ignore=SC2046
 RUN npm install -g $(cat /tmp/npm.txt) && npm cache clean --force
 
 CMD ["/bin/bash", "-l"]

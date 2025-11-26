@@ -8,6 +8,7 @@ LABEL mkdev.name="haskell-fedora" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && adduser $USERNAME
 
@@ -26,6 +27,7 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
 RUN set -o pipefail && curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | bash
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/ghcup.txt /tmp/
+# hadolint ignore=SC2046
 RUN ghcup install $( cat/tmp/ghcup.txt)
 
 CMD ["/bin/bash", "-l"]

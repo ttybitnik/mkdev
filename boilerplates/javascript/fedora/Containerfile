@@ -8,6 +8,7 @@ LABEL mkdev.name="javascript-fedora" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
 COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && adduser $USERNAME
 
@@ -19,6 +20,7 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
     NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/npm.txt /tmp/
+# hadolint ignore=SC2046
 RUN npm install -g $(cat /tmp/npm.txt) && npm cache clean --force
 
 CMD ["/bin/bash", "-l"]
