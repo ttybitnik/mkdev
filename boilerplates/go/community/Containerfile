@@ -26,8 +26,7 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
 COPY --chown=$USERNAME:$USERNAME go.mod go.sum ./
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
-# hadolint ignore=SC2046
-RUN go install $(cat /tmp/go.txt)
+RUN xargs -n 1 go install < /tmp/go.txt
 RUN go mod download && go mod verify
 
 CMD ["/bin/bash", "-l"]

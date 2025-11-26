@@ -23,8 +23,7 @@ ENV PATH="/home/$USERNAME/.local/venv/bin:$PATH" \
     NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
-# hadolint ignore=SC2046
-RUN go install $(cat /tmp/go.txt)
+RUN xargs -n 1 go install < /tmp/go.txt
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/pip.txt /tmp/
 RUN python3 -m venv /home/$USERNAME/.local/venv \
