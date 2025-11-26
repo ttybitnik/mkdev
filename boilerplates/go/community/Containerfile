@@ -7,13 +7,11 @@ LABEL mkdev.name="go-community" \
       mkdev.summary="Boilerplate with general tools for developing Go-related projects" \
       mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
 
-COPY .mkdev/*.txt /tmp/
-
-RUN apt-get update && xargs -n 1 apt-get install --no-install-recommends -y < /tmp/apt.txt \
+COPY .mkdev/apt.txt /tmp/
+RUN apt-get update && apt-get install --no-install-recommends -y $(cat /tmp/apt.txt) \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && adduser $USERNAME \
-    && chown $USERNAME:$USERNAME /tmp/*.txt \
     && ln -s /usr/local/go/bin/* /usr/local/bin/
 
 WORKDIR /home/$USERNAME/workspace
@@ -27,7 +25,8 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
     GOPATH=/home/$USERNAME/go \
     GOBIN="/home/$USERNAME/.local/bin"
 
-RUN xargs -n 1 go install < /tmp/go.txt
+COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
+RUN go install $(cat /tmp/go.txt)
 RUN go mod download && go mod verify
 
 CMD ["/bin/bash", "-l"]

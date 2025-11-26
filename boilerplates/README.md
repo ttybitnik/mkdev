@@ -11,6 +11,7 @@
 
 - **`ARG`**: Build-time argument for specifying the `USERNAME` (default value: `mkdev`).
 - **`LABEL`**: Metadata instruction including `name`, `summary`, and `usage` information.
+- **`COPY`**: Package list files for package managers inside the container.
 - **`RUN`**: Commands for setting up the environment, including installing the **packages files**, removing cache files, and creating the non-root user.
 - **`WORKDIR`**: Path to the project files inside the container `/home/$USERNAME/workspace`.
 - **`USER`**: Specifies the user to the non-root `$USERNAME`.
