@@ -17,14 +17,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y $(cat /tmp/apt.
 
 WORKDIR /home/$USERNAME/workspace
 
-COPY go.mod go.sum ./
-RUN chown $USERNAME:$USERNAME ./go.mod ./go.sum
-
 USER $USERNAME
 
 ENV PATH="/home/$USERNAME/.local/bin:$PATH" \
     GOPATH=/home/$USERNAME/go \
     GOBIN="/home/$USERNAME/.local/bin"
+
+COPY --chown=$USERNAME:$USERNAME go.mod go.sum ./
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
 # hadolint ignore=SC2046
