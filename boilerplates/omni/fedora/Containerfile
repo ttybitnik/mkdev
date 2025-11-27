@@ -20,17 +20,32 @@ ENV PATH="/home/$USERNAME/.local/bin:$PATH"
 ENV PATH="/home/$USERNAME/.local/venv/bin:$PATH" \
     GOPATH="/home/$USERNAME/.local/share/go" \
     GOBIN="/home/$USERNAME/.local/bin" \
-    NPM_CONFIG_PREFIX="/home/$USERNAME/.local"
+    NPM_CONFIG_PREFIX="/home/$USERNAME/.local" \
+    CHICKEN_INSTALL_PREFIX="/home/$USERNAME/.local" \
+    CHICKEN_INSTALL_REPOSITORY="/home/$USERNAME/.local/lib/chicken/11" \
+    CHICKEN_REPOSITORY_PATH="/home/$USERNAME/.local/lib/chicken/11:/usr/lib64/chicken/11" \
+    CARGO_HOME="/home/$USERNAME/.local" \
+    RUSTUP_HOME="/home/$USERNAME/.local/share/rustup"
+
+COPY --chown=$USERNAME:$USERNAME .mkdev/chicken.txt /tmp/
+# hadolint ignore=SC2046
+RUN chicken-install $(cat /tmp/chicken.txt)
+
+# hadolint ignore=DL4006,SC3040
+RUN set -o pipefail && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+COPY --chown=$USERNAME:$USERNAME .mkdev/rustup.txt /tmp/
+# hadolint ignore=SC2046
+RUN rustup component add $(cat /tmp/rustup.txt)
 
 COPY --chown=$USERNAME:$USERNAME .mkdev/go.txt /tmp/
 RUN xargs -n 1 go install < /tmp/go.txt
 
-COPY --chown=$USERNAME:$USERNAME .mkdev/pip.txt /tmp/
-RUN python3 -m venv /home/$USERNAME/.local/venv \
-    && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
-
 COPY --chown=$USERNAME:$USERNAME .mkdev/npm.txt /tmp/
 # hadolint ignore=SC2046
 RUN npm install -g $(cat /tmp/npm.txt) && npm cache clean --force
+
+COPY --chown=$USERNAME:$USERNAME .mkdev/pip.txt /tmp/
+RUN python3 -m venv /home/$USERNAME/.local/venv \
+    && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
 
 CMD ["/bin/bash", "-l"]

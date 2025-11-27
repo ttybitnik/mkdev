@@ -1,0 +1,6 @@
+ansible/fedora
+bash/fedora
+c/fedora
+chicken/fedora
+go/fedora
+rust/fedora
