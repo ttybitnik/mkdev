@@ -65,9 +65,9 @@ source_of_truh="Omni.mk"
 update_makefiles "$source_of_truh"
 
 if git status --porcelain | grep -q 'Makefile'; then
-    printf "%s: boilerplates updated successfully.\n" "$0"
+    printf "%s: makefiles updated successfully.\n" "$0"
     ci_output "true"
 else
-    printf "%s: nothing to update, no boilerplate changes.\n" "$0"
+    printf "%s: nothing to update, no makefile changes.\n" "$0"
     ci_output "false"
 fi

@@ -100,11 +100,11 @@ generate_markdown()
 ci_output()
 {
     if [ -n "$CI" ]; then
-        local status_readme="$1"
-        if [[ "$status_readme" == "true" && "$RUN_MODE" == "push" ]]; then
+        local status_docs="$1"
+        if [[ "$status_docs" == "true" && "$RUN_MODE" == "push" ]]; then
             printf "::notice title=%s::boilerplates updated successfully.\n" "$0"
         fi
-        printf "readme=%s\n" "$status_readme" >>"$GITHUB_OUTPUT"
+        printf "docs=%s\n" "$status_docs" >>"$GITHUB_OUTPUT"
     fi
 }
 
@@ -120,9 +120,9 @@ for md in ./boilerplates/*/*/README.md; do
 done
 
 if git status --porcelain | grep -q 'README'; then
-    printf "%s: readme files updated successfully.\n" "$0"
+    printf "%s: docs updated successfully.\n" "$0"
     ci_output "true"
 else
-    printf "%s: nothing to update, no readme changes.\n" "$0"
+    printf "%s: nothing to update, no doc changes.\n" "$0"
     ci_output "false"
 fi
