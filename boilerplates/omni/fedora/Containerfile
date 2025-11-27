@@ -10,7 +10,11 @@ LABEL mkdev.name="omni-fedora" \
 COPY .mkdev/dnf.txt /tmp/
 # hadolint ignore=SC2046
 RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
-    && adduser $USERNAME
+    && adduser $USERNAME \
+    && mkdir -p /home/$USERNAME/.local/ansible \
+    && ln -s /home/$USERNAME/.local/ansible /home/$USERNAME/.ansible \
+    && ln -s /usr/bin/podman-remote /usr/bin/podman \
+    && chown -R $USERNAME:$USERNAME /home/$USERNAME/.local/
 
 WORKDIR /home/$USERNAME/workspace
 
