@@ -14,7 +14,7 @@ RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
     && mkdir -p /home/$USERNAME/.local/ansible \
     && ln -s /home/$USERNAME/.local/ansible /home/$USERNAME/.ansible \
     && ln -s /usr/bin/podman-remote /usr/bin/podman \
-    && chown -R $USERNAME:$USERNAME /home/ttybitnik/.local/
+    && chown -R $USERNAME:$USERNAME /home/$USERNAME/.local/
 
 WORKDIR /home/$USERNAME/workspace
 
