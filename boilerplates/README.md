@@ -86,5 +86,5 @@ The files `./Dev.mk` (per-project) and `./Omni.mk` (multi-project) are the sourc
 To streamline this process in one step, run:
 
 ```shell
-./linter.sh && ./update-docs.sh && ./update-makefiles.sh
+./linter.sh && ./update-omni.sh && ./update-makefiles.sh && ./update-docs.sh
 ```
