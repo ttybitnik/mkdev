@@ -1,0 +1,3 @@
+clippy
+rust-analyzer
+rust-src
