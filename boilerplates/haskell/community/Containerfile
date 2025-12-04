@@ -1,4 +1,4 @@
-# MKDEV 0.11.0 (x-release-please-version)
+# MKDEV 1.0.0 (x-release-please-version)
 FROM docker.io/haskell:latest
 
 ARG USERNAME=mkdev

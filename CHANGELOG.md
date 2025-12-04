@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.0.0](https://github.com/ttybitnik/mkdev/compare/v0.11.0...v1.0.0) (2025-12-04)
+
+
+### Features
+
+* **omni:** add update-omni.sh script ([7143c8e](https://github.com/ttybitnik/mkdev/commit/7143c8e10c896c003e3420c2792c924f349a09ed))
+* **omni:** include ansible environment ([7b47dfb](https://github.com/ttybitnik/mkdev/commit/7b47dfb0485d6640bc27bd8d7f1c86f72c101376))
+* **omni:** include chicken and rust environments ([49d36ac](https://github.com/ttybitnik/mkdev/commit/49d36ac2593d79b47b947607a7f022734f4f690f))
+
+
+### Bug Fixes
+
+* **ansible:** replace hardcoded username with variable ([1eff69a](https://github.com/ttybitnik/mkdev/commit/1eff69afddb551f9ebba2244378e69f342996263))
+* **go:** install packages individually using xargs ([56f61bf](https://github.com/ttybitnik/mkdev/commit/56f61bf6fc6a37d8940249d9276370a094d9d864))
+
+
+### Performance Improvements
+
+* **boilerplates:** optimize cache layering and build times ([739031a](https://github.com/ttybitnik/mkdev/commit/739031a008cf53da44a248f06f5b10d10e9af089))
+* **boilerplates:** reduce apt installation time with no-install-recommends ([0ec55bc](https://github.com/ttybitnik/mkdev/commit/0ec55bcbe18c44c57bcb2649c06c8b2df9f496d1))
+
+
+### Miscellaneous Chores
+
+* release 1.0.0 ([f6c0c9e](https://github.com/ttybitnik/mkdev/commit/f6c0c9ea11e5a98c696f1da2483c865040a0076c))
+
 ## [0.11.0](https://github.com/ttybitnik/mkdev/compare/v0.10.0...v0.11.0) (2025-11-05)
 
 
