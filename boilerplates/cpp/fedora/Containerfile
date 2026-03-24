@@ -1,0 +1,25 @@
+# MKDEV 1.0.0 (x-release-please-version)
+FROM docker.io/fedora:latest
+
+ARG USERNAME=mkdev
+
+LABEL mkdev.name="cpp-fedora" \
+      mkdev.summary="Boilerplate with general tools for developing CPP-related projects" \
+      mkdev.usage="For more information, see <https://github.com/ttybitnik/mkdev>"
+
+COPY .mkdev/dnf.txt /tmp/
+# hadolint ignore=SC2046
+RUN dnf update -y && dnf install -y $(cat /tmp/dnf.txt) && dnf clean all \
+    && adduser $USERNAME
+
+WORKDIR /home/$USERNAME/workspace
+
+USER $USERNAME
+
+ENV PATH="/home/$USERNAME/.local/bin:$PATH"
+
+COPY --chown=$USERNAME:$USERNAME .mkdev/pip.txt /tmp/
+RUN python3 -m venv /home/$USERNAME/.local/venv \
+    && /home/$USERNAME/.local/venv/bin/pip install --no-cache-dir -r /tmp/pip.txt
+
+CMD ["/bin/bash", "-l"]

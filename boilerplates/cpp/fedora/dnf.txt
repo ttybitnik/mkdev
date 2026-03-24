@@ -1,0 +1,11 @@
+git
+make
+ripgrep
+gcc
+gcc-c++
+cppcheck
+clang
+clang-tools-extra
+gdb
+strace
+ltrace
