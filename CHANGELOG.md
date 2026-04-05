@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/ttybitnik/mkdev/compare/v1.0.0...v1.1.0) (2026-04-05)
+
+
+### Features
+
+* **cpp:** add fedora boilerplates ([f8971e5](https://github.com/ttybitnik/mkdev/commit/f8971e5bdb528124e1e67a4399fc845f7af67588))
+
 ## [1.0.0](https://github.com/ttybitnik/mkdev/compare/v0.11.0...v1.0.0) (2025-12-04)
 
 

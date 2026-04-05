@@ -1,4 +1,4 @@
-# MKDEV 1.0.0 (x-release-please-version)
+# MKDEV 1.1.0 (x-release-please-version)
 # See <https://github.com/ttybitnik/mkdev> for more information.
 
 PROJECT_NAME     = changeme
