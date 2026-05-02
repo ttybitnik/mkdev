@@ -4,8 +4,9 @@
   "changelog-type": "default",
   "changelog-path": "CHANGELOG.md",
   "include-component-in-tag": false,
-  "draft": false,
+  "draft": true,
   "prerelease": false,
+  "force-tag-creation": true,
   "bump-minor-pre-major": true,
   "changelog-sections": [
     {
@@ -69,7 +70,7 @@
       "hidden": true
     }
   ],
- "packages": {
+  "packages": {
     ".": {
       "extra-files": [
         "Omni.mk",
