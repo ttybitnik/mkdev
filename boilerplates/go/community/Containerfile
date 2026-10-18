@@ -1,6 +1,7 @@
 # MKDEV 1.0.0 (x-release-please-version)
 FROM docker.io/golang:latest
 
+# hadolint ignore=DL3064
 ARG USERNAME=mkdev
 
 LABEL mkdev.name="go-community" \
