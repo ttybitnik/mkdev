@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/ttybitnik/mkdev/compare/v1.0.0...v1.1.0) (2026-10-18)
+
+
+### Features
+
+* **c:** add libasan, libtsan, and libubsan packages ([7054e99](https://github.com/ttybitnik/mkdev/commit/7054e999a72042db15b81cd7e111251ebcec527d))
+* **cpp:** add fedora boilerplates ([f8971e5](https://github.com/ttybitnik/mkdev/commit/f8971e5bdb528124e1e67a4399fc845f7af67588))
+* **cpp:** add libasan, libtsan, and libubsan packages ([c60b85e](https://github.com/ttybitnik/mkdev/commit/c60b85ea5cc7e389e0313be301fe64f924fcfd55))
+* **omni:** add libasan, libtsan, and libubsan packages ([d4337f6](https://github.com/ttybitnik/mkdev/commit/d4337f69d70dddd1d26be1344fdea1ee5a787226))
+
 ## [1.0.0](https://github.com/ttybitnik/mkdev/compare/v0.11.0...v1.0.0) (2025-12-04)
 
 
