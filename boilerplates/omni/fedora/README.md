@@ -12,6 +12,9 @@
 |         | git               |                                                            |                                  |                |              |               |
 |         | golang            |                                                            |                                  |                |              |               |
 |         | hadolint          |                                                            |                                  |                |              |               |
+|         | libasan           |                                                            |                                  |                |              |               |
+|         | libtsan           |                                                            |                                  |                |              |               |
+|         | libubsan          |                                                            |                                  |                |              |               |
 |         | ltrace            |                                                            |                                  |                |              |               |
 |         | make              |                                                            |                                  |                |              |               |
 |         | npm               |                                                            |                                  |                |              |               |
