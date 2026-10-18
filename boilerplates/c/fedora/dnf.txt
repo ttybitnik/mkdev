@@ -7,3 +7,6 @@ clang-tools-extra
 gdb
 strace
 ltrace
+libasan
+libtsan
+libubsan
