@@ -13,6 +13,9 @@
 | gdb               |         |
 | strace            |         |
 | ltrace            |         |
+| libasan           |         |
+| libtsan           |         |
+| libubsan          |         |
 
 1. Create a `.mkdev` directory at the root of the project.
 2. Copy all the boilerplate files into the `.mkdev` directory.
